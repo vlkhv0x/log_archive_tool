@@ -1,0 +1,23 @@
+#!/bin/bash
+
+path="$HOME/bin"
+read -p "Введите полный путь к файлу: " filename
+if [ -z "$filename" ]; then
+    echo "Ошибка, имя файла не указано" 
+    exit 1
+fi
+
+if [! -f "$filename" ] && [! -s "$filename" ]; then
+    echo "Файл $filename не существует или пустой" 
+    exit 1
+fi
+datefile=$(date +%Y%m%d_%H%M)
+namefile=$(basename "$filename")
+archivename="${namefile}.${datefile}.tar.gz"
+tpath="${path}/${archivename}"
+tar -czf "$tpath" "$filename" || {
+    echo "Ошибка: не удалось заархивировать $filename"
+    exit 1
+}
+
+echo "Файл $filename заархивирован в $tpath"
