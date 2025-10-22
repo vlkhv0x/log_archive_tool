@@ -1,5 +1,5 @@
 # log_archive_tool
-https://github.com/vlkhv0x/log_archive_tool
+https://roadmap.sh/projects/log-archive-tool
 
 Требования
 
